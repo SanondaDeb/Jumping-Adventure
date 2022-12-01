@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/guptasagorika's song (1).mp3-f0163e6ddeb9bb9817cccd544db9b28f.mp3str"
+
+[deps]
+
+source_file="res://music/guptasagorika's song (1).mp3"
+dest_files=[ "res://.import/guptasagorika's song (1).mp3-f0163e6ddeb9bb9817cccd544db9b28f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

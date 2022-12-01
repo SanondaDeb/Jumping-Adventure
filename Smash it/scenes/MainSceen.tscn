@@ -1,0 +1,283 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Enemy Spawner.gd" type="Script" id=2]
+[ext_resource path="res://Sho-CardCapsNF.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/MainSceen.gd" type="Script" id=4]
+[ext_resource path="res://images/background.png" type="Texture" id=5]
+[ext_resource path="res://planetbe.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://music/guptasagorika's song (1).mp3" type="AudioStream" id=7]
+[ext_resource path="res://music/explosion.wav" type="AudioStream" id=8]
+[ext_resource path="res://DynaPuff-Medium.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_size = 7
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "first"
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.2, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 239, 130 ), Vector2( 239, 150 ), Vector2( 239, 130 ), Vector2( 239, 110 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "shake"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 510, 300 ), Vector2( 500, 300 ), Vector2( 520, 300 ), Vector2( 510, 300 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 100
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0431373, 0.933333, 0.886275, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.0470588, 0.00392157, 0.219608, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color( 0, 0, 0, 0.854902 )
+shadow_size = 8
+shadow_offset = Vector2( 5, 4 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.592157, 0.0431373, 0.933333, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.219608, 0.00392157, 0.180392, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color( 0, 0, 0, 0.854902 )
+shadow_size = 8
+shadow_offset = Vector2( 5, 4 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.87451, 0.933333, 0.0313726, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.219608, 0.00392157, 0.00392157, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color( 0, 0, 0, 0.854902 )
+shadow_size = 8
+shadow_offset = Vector2( 5, 4 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 80
+outline_size = 7
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 40
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 70
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 9 )
+
+[node name="MainSceen" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2( 10, 0 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="ColorRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+margin_top = -31.0
+margin_right = 1458.0
+margin_bottom = 706.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 304.742, 318.676 )
+
+[node name="Enemy Spawner" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="Enemy Spawner"]
+wait_time = 0.3
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0.796078, 0.780392, 0.368627, 1 )
+margin_left = 239.0
+margin_top = 130.0
+margin_right = 885.0
+margin_bottom = 245.001
+rect_pivot_offset = Vector2( -898.697, 186.676 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Tap to start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "first"
+playback_speed = 2.0
+anims/first = SubResource( 2 )
+anims/shake = SubResource( 3 )
+
+[node name="Endscreen" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Endscreen"]
+margin_left = 129.803
+margin_top = 50.0
+margin_right = 895.803
+margin_bottom = 572.0
+color = Color( 0, 0, 0, 0.439216 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Endscreen"]
+margin_left = 340.0
+margin_top = 50.0
+margin_right = 597.0
+margin_bottom = 202.0
+custom_fonts/font = SubResource( 4 )
+text = "Died"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" type="Button" parent="Endscreen"]
+margin_left = 340.0
+margin_top = 284.301
+margin_right = 628.0
+margin_bottom = 416.301
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Retry"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Home" type="Button" parent="Endscreen"]
+margin_left = 340.0
+margin_top = 441.3
+margin_right = 624.0
+margin_bottom = 573.3
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Home"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Endscreen"]
+margin_left = 180.21
+margin_top = 165.966
+margin_right = 264.21
+margin_bottom = 250.966
+custom_fonts/font = SubResource( 9 )
+text = "50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScore" type="Label" parent="Endscreen"]
+margin_left = 568.603
+margin_top = 165.966
+margin_right = 652.603
+margin_bottom = 250.966
+custom_fonts/font = SubResource( 9 )
+text = "50"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 510, 300 )
+current = true
+
+[node name="Died" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Back" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.947
+autoplay = true
+
+[node name="Score" type="Label" parent="."]
+margin_left = 895.803
+margin_top = 50.0
+margin_right = 952.803
+margin_bottom = 110.0
+custom_fonts/font = SubResource( 10 )
+text = "50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreIncreser" type="Timer" parent="."]
+
+[connection signal="died" from="." to="." method="_on_MainSceen_died"]
+[connection signal="timeout" from="Enemy Spawner/Timer" to="Enemy Spawner" method="_on_Timer_timeout"]
+[connection signal="pressed" from="Endscreen/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="Endscreen/Home" to="." method="_on_Play_pressed"]
+[connection signal="timeout" from="ScoreIncreser" to="." method="_on_ScoreIncreser_timeout"]

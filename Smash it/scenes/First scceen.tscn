@@ -1,0 +1,225 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://planetbe.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sho-CardCapsNF.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://images/star_06.png" type="Texture" id=3]
+[ext_resource path="res://scripts/First scceen.gd" type="Script" id=4]
+[ext_resource path="res://music/guptasagorika's song (1).mp3" type="AudioStream" id=5]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 0.92
+glow_strength = 0.52
+glow_blend_mode = 1
+glow_hdr_threshold = 1.2
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.453704, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.0809822, 0.102825, 0.291992, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.0666667, 0.944444, 0.955556 )
+colors = PoolColorArray( 0.992188, 1, 0, 1, 0, 0.806549, 0.964844, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 2
+emission_box_extents = Vector3( 500, 400, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 190.48
+initial_velocity_random = 0.37
+angular_velocity = 251.43
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.05
+color_ramp = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 100
+outline_size = 8
+outline_color = Color( 0.0235294, 0.0627451, 0.0588235, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.0431373, 0.933333, 0.886275, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.0470588, 0.00392157, 0.219608, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color( 0, 0, 0, 0.854902 )
+shadow_size = 8
+shadow_offset = Vector2( 5, 4 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.592157, 0.0431373, 0.933333, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.219608, 0.00392157, 0.180392, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color( 0, 0, 0, 0.854902 )
+shadow_size = 8
+shadow_offset = Vector2( 5, 4 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.87451, 0.933333, 0.0313726, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.219608, 0.00392157, 0.00392157, 1 )
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color( 0, 0, 0, 0.854902 )
+shadow_size = 8
+shadow_offset = Vector2( 5, 4 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 80
+outline_size = 7
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+emission_shape = 1
+emission_sphere_radius = 0.01
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 190.48
+initial_velocity_random = 0.37
+angular_velocity = 251.43
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.1
+color_ramp = SubResource( 5 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "play hover"
+
+[node name="First scceen" type="Control"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1302.0
+margin_bottom = 670.0
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back" type="Particles2D" parent="."]
+visible = false
+modulate = Color( 3, 1, 3, 1 )
+position = Vector2( 552, 288 )
+amount = 100
+process_material = SubResource( 6 )
+texture = ExtResource( 3 )
+
+[node name="Title" type="Label" parent="."]
+modulate = Color( 1, 3, 3, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 344.538
+margin_top = 5.09296
+margin_right = 990.538
+margin_bottom = 312.093
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.6, 0.87451, 0.901961, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 0.435294 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.984314 )
+custom_constants/shadow_offset_x = 11
+custom_constants/shadow_offset_y = 7
+custom_constants/shadow_as_outline = 0
+text = "Jumping
+Adventure"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+margin_left = 515.078
+margin_top = 313.657
+margin_right = 799.078
+margin_bottom = 445.657
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shop" type="Button" parent="."]
+margin_left = 515.078
+margin_top = 459.657
+margin_right = 799.078
+margin_bottom = 591.657
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Shop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="click" type="Particles2D" parent="."]
+modulate = Color( 3, 1, 3, 1 )
+position = Vector2( 870, 402 )
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.14
+process_material = SubResource( 12 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/play hover" = SubResource( 13 )
+
+[node name="Back" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.947
+autoplay = true
+
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Shop" to="." method="_on_Shop_pressed"]
